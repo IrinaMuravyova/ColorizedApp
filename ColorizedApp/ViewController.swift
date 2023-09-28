@@ -7,13 +7,71 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
+    // MARK: - IBOutlets
+    @IBOutlet var colorView: UIView!
+    
+    @IBOutlet var redSlider: UISlider!
+    @IBOutlet var greenSlider: UISlider!
+    @IBOutlet var blueSlider: UISlider!
+    
+    @IBOutlet var redLabel: UILabel!
+    @IBOutlet var greenLabel: UILabel!
+    @IBOutlet var blueLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupSliders()
+        setupLabels()
+        
     }
 
+    // MARK: - IBActions
+    @IBAction func RedSliderAction() {
+        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
+        redLabel.text = String(format: "%.2f",redSlider.value/255)
+        
+    }
+    @IBAction func GreenSliderAction() {
+        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
+        greenLabel.text = String(format: "%.2f",greenSlider.value/255)
+    }
+    
+    @IBAction func BlueSliderAction() {
+        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
+        blueLabel.text = String(format: "%.2f",blueSlider.value/255)
+    }
+    
+    // MARK: - Private methods
+    
+    private func setupSliders() {
+        redSlider.minimumTrackTintColor = .red
+        redSlider.maximumTrackTintColor = .gray
+        redSlider.thumbTintColor = .red
+        redSlider.minimumValue = 0
+        redSlider.maximumValue = 1
+        redSlider.value = 0.5
+        
+        greenSlider.minimumTrackTintColor = .green
+        greenSlider.maximumTrackTintColor = .gray
+        greenSlider.thumbTintColor = .green
+        greenSlider.minimumValue = 0
+        greenSlider.maximumValue = 1
+        greenSlider.value = 0.3
+        
+        blueSlider.minimumTrackTintColor = .blue
+        blueSlider.maximumTrackTintColor = .gray
+        blueSlider.thumbTintColor = .blue
+        blueSlider.minimumValue = 0
+        blueSlider.maximumValue = 1
+        blueSlider.value = 0.4
+    }
+    
+    private func setupLabels() {
+        redLabel.text = String(format: "%.2f", redSlider.value)
+        greenLabel.text = String(format: "%.2f", greenSlider.value)
+        blueLabel.text = String(format: "%.2f", blueSlider.value)
+    }
 
 }
 
