@@ -23,23 +23,24 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         setupSliders()
         setupLabels()
+        setupView()
         
     }
 
     // MARK: - IBActions
     @IBAction func RedSliderAction() {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
-        redLabel.text = String(format: "%.2f",redSlider.value/255)
+        redLabel.text = String(format: "%.2f",redSlider.value)
         
     }
     @IBAction func GreenSliderAction() {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
-        greenLabel.text = String(format: "%.2f",greenSlider.value/255)
+        greenLabel.text = String(format: "%.2f",greenSlider.value)
     }
     
     @IBAction func BlueSliderAction() {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
-        blueLabel.text = String(format: "%.2f",blueSlider.value/255)
+        blueLabel.text = String(format: "%.2f",blueSlider.value)
     }
     
     // MARK: - Private methods
@@ -73,5 +74,8 @@ final class ViewController: UIViewController {
         blueLabel.text = String(format: "%.2f", blueSlider.value)
     }
 
+    private func setupView() {
+        colorView.layer.cornerRadius = colorView.frame.height/5
+    }
 }
 
