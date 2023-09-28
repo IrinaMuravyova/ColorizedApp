@@ -19,28 +19,43 @@ final class ViewController: UIViewController {
     @IBOutlet var greenLabel: UILabel!
     @IBOutlet var blueLabel: UILabel!
     
+    let opaque = 1.0
+    var redValue: CGFloat = 0.0
+    var greenValue: CGFloat = 0.0
+    var blueValue: CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupSliders()
         setupLabels()
         setupView()
+        
+        redValue = CGFloat(redSlider.value)
+        greenValue = CGFloat(greenSlider.value)
+        blueValue = CGFloat(blueSlider.value)
+        
+        
         
     }
 
     // MARK: - IBActions
     @IBAction func RedSliderAction() {
-        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
-        redLabel.text = String(format: "%.2f",redSlider.value)
+        redValue = CGFloat(redSlider.value)
+        colorView.backgroundColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: opaque)
+        redLabel.text = String(format: "%.2f", redValue)
         
     }
     @IBAction func GreenSliderAction() {
-        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
-        greenLabel.text = String(format: "%.2f",greenSlider.value)
+        greenValue = CGFloat(greenSlider.value)
+        colorView.backgroundColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: opaque)
+        greenLabel.text = String(format: "%.2f", greenValue)
     }
     
     @IBAction func BlueSliderAction() {
-        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1.0)
-        blueLabel.text = String(format: "%.2f",blueSlider.value)
+        blueValue = CGFloat(blueSlider.value)
+        colorView.backgroundColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: opaque)
+        blueLabel.text = String(format: "%.2f", blueValue)
     }
     
     // MARK: - Private methods
@@ -69,9 +84,9 @@ final class ViewController: UIViewController {
     }
     
     private func setupLabels() {
-        redLabel.text = String(format: "%.2f", redSlider.value)
-        greenLabel.text = String(format: "%.2f", greenSlider.value)
-        blueLabel.text = String(format: "%.2f", blueSlider.value)
+        redLabel.text = String(format: "%.2f", redValue)
+        greenLabel.text = String(format: "%.2f", greenValue)
+        blueLabel.text = String(format: "%.2f", blueValue)
     }
 
     private func setupView() {
