@@ -45,6 +45,7 @@ final class ViewController: UIViewController {
             blue: CGFloat(blueSlider.value),
             alpha: opaque
         )
+        setupLabels()
     }
     
     // MARK: - Private methods
