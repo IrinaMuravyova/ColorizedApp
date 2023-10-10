@@ -32,6 +32,7 @@ final class ViewController: UIViewController {
         colorView.layer.cornerRadius = colorView.frame.height/5
         setupColorView()
         setupLabels()
+        setupTextFields()
     }
 
     // MARK: - IBActions
@@ -48,10 +49,13 @@ final class ViewController: UIViewController {
         switch sender {
         case redSlider:
             redLabel.text = string(from: sender)
+            redTextField.text = string(from: sender)
         case greenSlider:
             greenLabel.text = string(from: sender)
+            greenTextField.text = string(from: sender)
         default :
             blueLabel.text = string(from: sender)
+            blueTextField.text = string(from: sender)
         }
     }
     // MARK: - Private methods
@@ -69,6 +73,12 @@ final class ViewController: UIViewController {
         redLabel.text = string(from: redSlider)
         greenLabel.text = string(from: greenSlider)
         blueLabel.text = string(from: blueSlider)
+    }
+    
+    private func setupTextFields() {
+        redTextField.text = string(from: redSlider)
+        greenTextField.text = string(from: greenSlider)
+        blueTextField.text = string(from: blueSlider)
     }
     
     private func string(from slider: UISlider) -> String {
