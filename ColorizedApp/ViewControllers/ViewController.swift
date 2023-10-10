@@ -19,6 +19,13 @@ final class ViewController: UIViewController {
     @IBOutlet var greenLabel: UILabel!
     @IBOutlet var blueLabel: UILabel!
     
+    var currentColor: ViewColor!
+    var delegate: ViewControllerDelegate!
+    
+//    guard let navigationVC = segue.destination as? UINavigationController else { return}
+//    guard let startVC = navigationVC.topViewController as? StartViewController else { return }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         colorView.layer.cornerRadius = colorView.frame.height/5
@@ -27,6 +34,12 @@ final class ViewController: UIViewController {
     }
 
     // MARK: - IBActions
+    @IBAction func DoneButtonTapped() {
+        delegate.setViewColor(withRed: redSlider.value,
+                              green: greenSlider.value,
+                              blue: blueSlider.value)
+        dismiss(animated: true)
+    }
     
     @IBAction func sliderActions(_ sender: UISlider) {
         setupColorView()

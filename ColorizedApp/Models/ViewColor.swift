@@ -6,7 +6,7 @@
 //
 
 struct ViewColor {
-    let redColorValue: Double
-    let greenColorValue: Double
-    let blueColorValue: Double
+    var redValue: Float
+    var greenValue: Float
+    var blueValue: Float
 }

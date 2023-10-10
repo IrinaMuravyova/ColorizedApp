@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="otX-BF-bOp">
             <objects>
-                <viewController id="Y3k-fk-KDn" sceneMemberID="viewController">
+                <viewController id="Y3k-fk-KDn" customClass="StartViewController" customModule="ColorizedApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uy8-TP-Mxh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,11 +19,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="kXM-9k-bQr">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" image="square.and.pencil" catalog="system" id="nPt-6j-lBF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="square.and.pencil" catalog="system" id="nPt-6j-lBF">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="Cw3-ya-u83"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="jOP-pY-H7W"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qV-iU-uix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -130,13 +131,23 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8o-En-gkB">
+                                <rect key="frame" x="175" y="434.33333333333331" width="64.333333333333314" height="34.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="DoneButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="o2c-hd-sjv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x6F-ZP-iyU" secondAttribute="trailing" constant="16" id="59k-Lz-cHl"/>
                             <constraint firstItem="x6F-ZP-iyU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7bU-Pa-oEN"/>
+                            <constraint firstItem="O8o-En-gkB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ATL-AQ-NnZ"/>
                             <constraint firstItem="IGy-E1-Bjm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="O8b-5z-73P"/>
+                            <constraint firstItem="O8o-En-gkB" firstAttribute="top" secondItem="IGy-E1-Bjm" secondAttribute="bottom" constant="60" id="dky-UF-jzs"/>
                             <constraint firstItem="IGy-E1-Bjm" firstAttribute="top" secondItem="x6F-ZP-iyU" secondAttribute="bottom" constant="40" id="gDl-NK-Po7"/>
                             <constraint firstAttribute="trailing" secondItem="IGy-E1-Bjm" secondAttribute="trailing" constant="16" id="lli-UV-RIh"/>
                             <constraint firstItem="IGy-E1-Bjm" firstAttribute="height" secondItem="x6F-ZP-iyU" secondAttribute="height" multiplier="0.6" id="mLq-Ev-ygs"/>
