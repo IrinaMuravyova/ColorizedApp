@@ -19,11 +19,12 @@ final class ViewController: UIViewController {
     @IBOutlet var greenLabel: UILabel!
     @IBOutlet var blueLabel: UILabel!
     
+    @IBOutlet var redTextField: UITextField!
+    @IBOutlet var greenTextField: UITextField!
+    @IBOutlet var blueTextField: UITextField!
+    
     var currentColor: ViewColor!
     var delegate: ViewControllerDelegate!
-    
-//    guard let navigationVC = segue.destination as? UINavigationController else { return}
-//    guard let startVC = navigationVC.topViewController as? StartViewController else { return }
 
     
     override func viewDidLoad() {
