@@ -33,8 +33,8 @@ final class SettingsViewController: UIViewController {
         colorView.backgroundColor = currentColor
         setSlidersValue()
         setupLabels()
+        setupTextFields()
 //        setupColorView()
-//        setupTextFields()
 //        activateDelegate()
     }
 
@@ -88,11 +88,11 @@ final class SettingsViewController: UIViewController {
         blueLabel.text = String(blueSlider.value)
     }
     
-//    private func setupTextFields() {
-//        redTextField.text = string(from: redSlider)
-//        greenTextField.text = string(from: greenSlider)
-//        blueTextField.text = string(from: blueSlider)
-//    }
+    private func setupTextFields() {
+        redTextField.text = String(redSlider.value)
+        greenTextField.text = String(greenSlider.value)
+        blueTextField.text = String(blueSlider.value)
+    }
     
 //    private func string(from slider: UISlider) -> String {
 //        String(format: "%.2f", slider.value)
