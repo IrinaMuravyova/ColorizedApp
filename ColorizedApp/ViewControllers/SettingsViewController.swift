@@ -37,6 +37,7 @@ final class SettingsViewController: UIViewController {
     }
 
     // MARK: - IBActions
+    ///IDelegate color to main View. If has mistake than return white color
     @IBAction func doneButtonTapped() {
         delegate.setViewColor(with: colorView.backgroundColor ?? .white)
         dismiss(animated: true)
@@ -49,7 +50,7 @@ final class SettingsViewController: UIViewController {
         setupTextFields()
     }
     // MARK: - Private methods
-    
+    ///Paint colorView depends from sliders' values
     private func setupColorView() {
         colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
@@ -72,6 +73,7 @@ final class SettingsViewController: UIViewController {
         blueTextField.text = string(from: blueSlider)
     }
     
+    ///Formatted UISlider to String with two sign after  dot
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }

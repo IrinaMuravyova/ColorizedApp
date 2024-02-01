@@ -11,7 +11,7 @@ protocol SettingsViewControllerDelegate {
     func setViewColor(with color: UIColor)
 }
 
-class StartViewController: UIViewController {
+final class StartViewController: UIViewController {
 
     var color: UIColor!
     
