@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class SettingsViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet var colorView: UIView!
     
@@ -33,6 +33,7 @@ final class ViewController: UIViewController {
         setupColorView()
         setupLabels()
         setupTextFields()
+        activateDelegate()
     }
 
     // MARK: - IBActions
@@ -84,5 +85,17 @@ final class ViewController: UIViewController {
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
+    
+    private func activateDelegate() {
+        redTextField.delegate = self
+        greenTextField.delegate = self
+        blueTextField.delegate = self
+    }
 }
 
+// MARK: - UITextFieldDelegate
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+}
