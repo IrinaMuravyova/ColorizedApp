@@ -55,43 +55,34 @@ final class SettingsViewController: UIViewController {
         dismiss(animated: true)
     }
     
-//    @IBAction func sliderActions(_ sender: UISlider) {
-//        setupColorView()
-//        
-//        switch sender {
-//        case redSlider:
-//            redLabel.text = string(from: sender)
-//            redTextField.text = string(from: sender)
-//        case greenSlider:
-//            greenLabel.text = string(from: sender)
-//            greenTextField.text = string(from: sender)
-//        default :
-//            blueLabel.text = string(from: sender)
-//            blueTextField.text = string(from: sender)
-//        }
-//    }
+    ///
+    @IBAction func sliderActions(_ sender: UISlider) {
+        setupColorView()
+        setupLabels()
+        setupTextFields()
+    }
     // MARK: - Private methods
     
-//    private func setupColorView() {
-//        colorView.backgroundColor = UIColor(
-//            red: CGFloat(redSlider.value),
-//            green: CGFloat(greenSlider.value),
-//            blue: CGFloat(blueSlider.value),
-//            alpha: 1
-//        )
-//    }
+    private func setupColorView() {
+        colorView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
+    }
     
     ///Sets text in labels depends from sliders' values.
     private func setupLabels() {
-        redLabel.text = String(redSlider.value)
-        greenLabel.text = String(greenSlider.value)
-        blueLabel.text = String(blueSlider.value)
+        redLabel.text = String(format: "%.2f",redSlider.value)
+        greenLabel.text = String(format: "%.2f",greenSlider.value)
+        blueLabel.text = String(format: "%.2f",blueSlider.value)
     }
-    
+    /// Sets text in text fields depends from sliders' values
     private func setupTextFields() {
-        redTextField.text = String(redSlider.value)
-        greenTextField.text = String(greenSlider.value)
-        blueTextField.text = String(blueSlider.value)
+        redTextField.text = String(format: "%.2f",redSlider.value)
+        greenTextField.text = String(format: "%.2f",greenSlider.value)
+        blueTextField.text = String(format: "%.2f",blueSlider.value)
     }
     
 //    private func string(from slider: UISlider) -> String {
