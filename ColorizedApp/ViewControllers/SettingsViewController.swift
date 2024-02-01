@@ -32,8 +32,8 @@ final class SettingsViewController: UIViewController {
         colorView.layer.cornerRadius = colorView.frame.height/5
         colorView.backgroundColor = currentColor
         setSlidersValue()
+        setupLabels()
 //        setupColorView()
-//        setupLabels()
 //        setupTextFields()
 //        activateDelegate()
     }
@@ -80,12 +80,13 @@ final class SettingsViewController: UIViewController {
 //            alpha: 1
 //        )
 //    }
-//    
-//    private func setupLabels() {
-//        redLabel.text = string(from: redSlider)
-//        greenLabel.text = string(from: greenSlider)
-//        blueLabel.text = string(from: blueSlider)
-//    }
+    
+    ///Sets text in labels depends from sliders' values.
+    private func setupLabels() {
+        redLabel.text = String(redSlider.value)
+        greenLabel.text = String(greenSlider.value)
+        blueLabel.text = String(blueSlider.value)
+    }
     
 //    private func setupTextFields() {
 //        redTextField.text = string(from: redSlider)
