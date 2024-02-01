@@ -24,7 +24,7 @@ final class SettingsViewController: UIViewController {
     @IBOutlet var blueTextField: UITextField!
     
     var currentColor: UIColor!
-//    var delegate: SettingsViewControllerDelegate!
+    var delegate: SettingsViewControllerDelegate!
 
     
     override func viewDidLoad() {
@@ -34,28 +34,15 @@ final class SettingsViewController: UIViewController {
         setSlidersValue()
         setupLabels()
         setupTextFields()
-//        setupColorView()
-//        activateDelegate()
     }
 
     // MARK: - IBActions
     @IBAction func doneButtonTapped() {
-//        setupSliders()
-//        setupLabels()
-        view.endEditing(true)
-        
-//        guard let color = currentColor else { return }
-//        delegate.setViewColor(with: color)
-//        delegate.setViewColor(withRed: redSlider.value,
-//                              green: greenSlider.value,
-//                              blue: blueSlider.value)
-//        delegate.setViewColor(withRed: (redTextField.text as? NSString)?.floatValue ?? 0,
-//                              green: (greenTextField.text as? NSString)?.floatValue ?? 0,
-//                              blue: (blueTextField.text as? NSString)?.floatValue ?? 0)
+        delegate.setViewColor(with: colorView.backgroundColor ?? .white)
         dismiss(animated: true)
     }
     
-    ///
+    ///When the slider moves, the color in ColorView, value in textField and text in label change
     @IBAction func sliderActions(_ sender: UISlider) {
         setupColorView()
         setupLabels()
@@ -74,26 +61,21 @@ final class SettingsViewController: UIViewController {
     
     ///Sets text in labels depends from sliders' values.
     private func setupLabels() {
-        redLabel.text = String(format: "%.2f",redSlider.value)
-        greenLabel.text = String(format: "%.2f",greenSlider.value)
-        blueLabel.text = String(format: "%.2f",blueSlider.value)
+        redLabel.text = string(from: redSlider)
+        greenLabel.text = string(from: greenSlider)
+        blueLabel.text = string(from: blueSlider)
     }
     /// Sets text in text fields depends from sliders' values
     private func setupTextFields() {
-        redTextField.text = String(format: "%.2f",redSlider.value)
-        greenTextField.text = String(format: "%.2f",greenSlider.value)
-        blueTextField.text = String(format: "%.2f",blueSlider.value)
+        redTextField.text = string(from: redSlider)
+        greenTextField.text = string(from: greenSlider)
+        blueTextField.text = string(from: blueSlider)
     }
     
-//    private func string(from slider: UISlider) -> String {
-//        String(format: "%.2f", slider.value)
-//    }
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
+    }
     
-//    private func activateDelegate() {
-//        redTextField.delegate = self
-//        greenTextField.delegate = self
-//        blueTextField.delegate = self
-//    }
     
     ///Set sliders value(red, green, blue) depends from color in ColorView
     private func setSlidersValue() {
@@ -104,27 +86,3 @@ final class SettingsViewController: UIViewController {
         blueSlider.value = Float(color.blue)
         }
     }
-
-
-// MARK: - UITextFieldDelegate
-//extension SettingsViewController: UITextFieldDelegate {
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        guard let newValue = textField.text else { return }
-////        guard let numberValue = Float(newValue) else { return }
-//        let numberValue = (textField.text as? NSString)?.floatValue ?? 0
-//        if textField == redTextField {
-//            currentColor.redValue = numberValue
-//        } else if textField == greenTextField {
-//            currentColor.greenValue = numberValue
-//        } else if textField == blueTextField {
-//            currentColor.blueValue = numberValue
-//        }
-////        setupLabels()
-////        setupColorView()
-//    }
-//    
-////    func textFieldShouldReturn(textField: UITextField) -> Bool {
-////     doneButtonTapped()
-////        return true
-////    }
-//}
