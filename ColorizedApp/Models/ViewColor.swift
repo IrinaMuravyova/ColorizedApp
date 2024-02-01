@@ -10,3 +10,4 @@ struct ViewColor {
     var greenValue: Float
     var blueValue: Float
 }
+

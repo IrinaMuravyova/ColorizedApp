@@ -23,13 +23,16 @@ final class SettingsViewController: UIViewController {
     @IBOutlet var greenTextField: UITextField!
     @IBOutlet var blueTextField: UITextField!
     
-    var currentColor: ViewColor!
-    var delegate: ViewControllerDelegate!
+//    var currentColor: ViewColor!
+//    var viewColor: UIColor!
+    var currentColor: UIColor!
+    var delegate: SettingsViewControllerDelegate!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         colorView.layer.cornerRadius = colorView.frame.height/5
+        colorView.backgroundColor = viewColor
         setupColorView()
         setupLabels()
         setupTextFields()
@@ -37,10 +40,19 @@ final class SettingsViewController: UIViewController {
     }
 
     // MARK: - IBActions
-    @IBAction func DoneButtonTapped() {
-        delegate.setViewColor(withRed: redSlider.value,
-                              green: greenSlider.value,
-                              blue: blueSlider.value)
+    @IBAction func doneButtonTapped() {
+//        setupSliders()
+//        setupLabels()
+        view.endEditing(true)
+        delegate.setViewColor(withRed: redSlider.value, green: greenSlider.value, blue: blueSlider.value)
+//        guard let color = currentColor else { return }
+//        delegate.setViewColor(with: color)
+//        delegate.setViewColor(withRed: redSlider.value,
+//                              green: greenSlider.value,
+//                              blue: blueSlider.value)
+//        delegate.setViewColor(withRed: (redTextField.text as? NSString)?.floatValue ?? 0,
+//                              green: (greenTextField.text as? NSString)?.floatValue ?? 0,
+//                              blue: (blueTextField.text as? NSString)?.floatValue ?? 0)
         dismiss(animated: true)
     }
     
@@ -91,11 +103,41 @@ final class SettingsViewController: UIViewController {
         greenTextField.delegate = self
         blueTextField.delegate = self
     }
-}
+    
+    private func setSlidersValue() {
+        let setupColor = CIColor(color: viewColor)
+        redSlider.value = Float(setupColor.red)
+        greenSlider.value = Float(setupColor.green)
+        blueSlider.value = Float(setupColor.blue)
+//        colorSliders.forEach { slider in
+//            switch slider {
+//            case redSlider: redSlider.value = Float(ciColor.red)
+//            case greenSlider: greenSlider.value = Float(ciColor.green)
+//            default: blueSlider.value = Float(ciColor.blue)
+//            }
+        }
+    }
+
 
 // MARK: - UITextFieldDelegate
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        guard let newValue = textField.text else { return }
+//        guard let numberValue = Float(newValue) else { return }
+        let numberValue = (textField.text as? NSString)?.floatValue ?? 0
+        if textField == redTextField {
+            currentColor.redValue = numberValue
+        } else if textField == greenTextField {
+            currentColor.greenValue = numberValue
+        } else if textField == blueTextField {
+            currentColor.blueValue = numberValue
+        }
+//        setupLabels()
+//        setupColorView()
     }
+    
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//     doneButtonTapped()
+//        return true
+//    }
 }

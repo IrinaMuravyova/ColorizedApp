@@ -7,29 +7,40 @@
 
 import UIKit
 
-protocol ViewControllerDelegate {
-    func setViewColor(withRed: Float, green: Float, blue: Float)
-}
+//protocol SettingsViewControllerDelegate {
+//    func setViewColor(withRed: Float, green: Float, blue: Float)
+////    func setViewColor(with color: ViewColor)
+//}
+
 class StartViewController: UIViewController {
 
-    var currentColor: ViewColor!
+//    var color: ViewColor!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let viewVC = segue.destination as? ViewController else { return}
-        viewVC.currentColor = currentColor
+        guard let viewVC = segue.destination as? SettingsViewController else { return}
+        viewVC.currentColor = view.backgroundColor
         viewVC.delegate = self
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//    }
 }
 
 // MARK: - ViewControllerDelegate
-extension StartViewController: ViewControllerDelegate {
-    func setViewColor(withRed redValue: Float, green greenValue: Float, blue blueValue: Float) {
-        view.backgroundColor = UIColor(red: CGFloat(redValue),
-                                       green: CGFloat(greenValue),
-                                       blue: CGFloat(blueValue),
-                                       alpha: 1)
-    }
-}
+//extension StartViewController: SettingsViewControllerDelegate {
+//    func setViewColor(withRed redValue: Float, green greenValue: Float, blue blueValue: Float) {
+//        view.backgroundColor = UIColor(red: CGFloat(redValue),
+//                                       green: CGFloat(greenValue),
+//                                       blue: CGFloat(blueValue),
+//                                       alpha: 1)
+//    }
+////    func setViewColor(with color: ViewColor) {
+////        self.color = color
+////        view.backgroundColor = UIColor(red: CGFloat(color.redValue),
+////                                       green: CGFloat(color.greenValue),
+////                                       blue: CGFloat(color.blueValue),
+////                                       alpha: 1)
+////    }
+//}
