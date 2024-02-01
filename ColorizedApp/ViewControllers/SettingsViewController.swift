@@ -23,8 +23,6 @@ final class SettingsViewController: UIViewController {
     @IBOutlet var greenTextField: UITextField!
     @IBOutlet var blueTextField: UITextField!
     
-//    var currentColor: ViewColor!
-//    var viewColor: UIColor!
     var currentColor: UIColor!
 //    var delegate: SettingsViewControllerDelegate!
 
@@ -33,6 +31,7 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         colorView.layer.cornerRadius = colorView.frame.height/5
         colorView.backgroundColor = currentColor
+        setSlidersValue()
 //        setupColorView()
 //        setupLabels()
 //        setupTextFields()
@@ -104,18 +103,14 @@ final class SettingsViewController: UIViewController {
 //        blueTextField.delegate = self
 //    }
     
-//    private func setSlidersValue() {
-//        let setupColor = CIColor(color: viewColor)
-//        redSlider.value = Float(setupColor.red)
-//        greenSlider.value = Float(setupColor.green)
-//        blueSlider.value = Float(setupColor.blue)
-//        colorSliders.forEach { slider in
-//            switch slider {
-//            case redSlider: redSlider.value = Float(ciColor.red)
-//            case greenSlider: greenSlider.value = Float(ciColor.green)
-//            default: blueSlider.value = Float(ciColor.blue)
-//            }
-//        }
+    ///Set sliders value(red, green, blue) depends from color in ColorView
+    private func setSlidersValue() {
+        let color = CIColor(color: currentColor)
+        
+        redSlider.value = Float(color.red)
+        greenSlider.value = Float(color.green)
+        blueSlider.value = Float(color.blue)
+        }
     }
 
 
