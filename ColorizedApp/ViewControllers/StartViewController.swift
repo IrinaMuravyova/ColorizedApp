@@ -13,14 +13,11 @@ protocol SettingsViewControllerDelegate {
 
 final class StartViewController: UIViewController {
 
-    var color: UIColor!
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewVC = segue.destination as? SettingsViewController else { return}
         viewVC.currentColor = view.backgroundColor
         viewVC.delegate = self
     }
-    
 }
 
 // MARK: - ViewControllerDelegate
