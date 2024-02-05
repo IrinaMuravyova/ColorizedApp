@@ -21,10 +21,6 @@ final class StartViewController: UIViewController {
         viewVC.delegate = self
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
 }
 
 // MARK: - ViewControllerDelegate
