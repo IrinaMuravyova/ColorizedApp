@@ -23,10 +23,11 @@ final class SettingsViewController: UIViewController {
     @IBOutlet var greenTextField: UITextField!
     @IBOutlet var blueTextField: UITextField!
     
+    // MARK: Public Properties
     var currentColor: UIColor!
     var delegate: SettingsViewControllerDelegate!
 
-    
+    // MARK: View Life Circle
     override func viewDidLoad() {
         super.viewDidLoad()
         colorView.layer.cornerRadius = colorView.frame.height/5
@@ -35,21 +36,30 @@ final class SettingsViewController: UIViewController {
         setupLabels()
         setupTextFields()
     }
+    
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
 
     // MARK: - IBActions
-    ///IDelegate color to main View. If has mistake than return white color
-    @IBAction func doneButtonTapped() {
-        delegate.setViewColor(with: colorView.backgroundColor ?? .white)
-        dismiss(animated: true)
-    }
-    
     ///When the slider moves, the color in ColorView, value in textField and text in label change
     @IBAction func sliderActions(_ sender: UISlider) {
         setupColorView()
         setupLabels()
         setupTextFields()
     }
-    // MARK: - Private methods
+    
+    // MARK: Delegate Methods
+    ///IDelegate color to main View. If has mistake than return white color
+    @IBAction func doneButtonTapped() {
+        delegate.setViewColor(with: colorView.backgroundColor ?? .white)
+        dismiss(animated: true)
+    }
+    
+
+    // MARK: - Private Methods
     ///Paint colorView depends from sliders' values
     private func setupColorView() {
         colorView.backgroundColor = UIColor(
@@ -83,8 +93,18 @@ final class SettingsViewController: UIViewController {
     private func setSlidersValue() {
         let color = CIColor(color: currentColor)
         
-        redSlider.value = Float(color.red)
-        greenSlider.value = Float(color.green)
-        blueSlider.value = Float(color.blue)
+        redSlider.setValue(Float(color.red), animated: true)
+        greenSlider.setValue(Float(color.green), animated: true)
+        blueSlider.setValue(Float(color.blue), animated: true)
         }
     }
+
+//    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "OK", style: .default) {_ in
+//            textField?.text = "1.00"
+//            textField?.becomeFirstResponder()
+//        }
+//        alert.addAction(okAction)
+//        present(alert, animated: true)
+//    }
